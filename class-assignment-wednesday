@@ -1,4 +1,5 @@
 //Class assignment Wed. - Display
+//http://jsbin.com/decefe/edit?html,css,js,output
 
 //html
 
@@ -10,13 +11,17 @@
   <title>JS Bin</title>
 </head>
 <body>
+    <h1>Team Triton's Cars</h1>
   <div id="app">
     Used Car Lot
   </div>
+   <h1>Hot Deals</h1>
   <div id="cars">
   </div>
+  <h1>New Cars</h1>
     <div id="lot">
   </div>
+<h1>Makes in Lot</h1>
   <div id="makes">
   </div>
 </body>
@@ -28,18 +33,42 @@
   background-color : burlywood;
 }
 
+#app:hover{
+  opacity: .5;
+}
+
 #cars {
-  background-color : red
+  background-color : red;
+
+}
+
+#cars:hover{
+  opacity: .5;
 }
 
 #lot {
-  background-color : aqua
+  background-color : aqua;
 }
+
+#lot:hover{
+  opacity: .5;
+}
+
 
 
 #makes {
-  background-color : orange
+  background-color : orange;
 }
+
+#makes:hover {
+  opacity: .5;
+}
+
+html {
+  font-family: helvetica; sans-serif;
+    text-align: center;
+}
+
 
 
 //JavaScript
