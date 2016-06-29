@@ -1,0 +1,125 @@
+//Class assignment Wed. - Display
+
+//html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="app">
+    Used Car Lot
+  </div>
+  <div id="cars">
+  </div>
+    <div id="lot">
+  </div>
+  <div id="makes">
+  </div>
+</body>
+</html>
+
+//CSS
+
+#app {
+  background-color : burlywood;
+}
+
+#cars {
+  background-color : red
+}
+
+#lot {
+  background-color : aqua
+}
+
+
+#makes {
+  background-color : orange
+}
+
+
+//JavaScript
+var usedCarLot = [
+    {make: "Chevrolet", model: "Cavalier", year: 1999},
+    {make: "Pontiac", model: "Grand Am", year: 2003},
+    {make: "Ford", model: "Focus", year: 2002},
+    {make: "Subaru", model: "Legacy", year: 2006},
+    {make: "Toyota", model: "Camry", year: 2009},
+];
+//pluck takes a string and takes the value of the string matching the property
+//pluck returns an array
+function where(list, properties) {
+    return list.filter(function (item) { //one line of list
+        var allpasses = true;
+        var passes = false;
+        for(var prop in properties) {  //checks each property (index), value
+          if(item[prop] === properties[prop]) {
+            console.log(item[prop], properties[prop]);
+              passes = true;
+          }
+          if (!passes) {allpasses = false;}
+          passes = false;
+        }
+      return allpasses;
+      }
+  );
+  }
+function pluck(list, propertyName) {
+    var result = list.map(function (a) {return a[propertyName];});
+    return result;
+}
+var specificMake = pluck (usedCarLot, "model") ;
+
+//where returns the entire object
+var specificModel = where(usedCarLot,{model: "Grand Am"});
+
+
+function render(result) {
+document.getElementById ("cars").innerHTML = result;
+}
+console.log("test:", specificModel);
+render(specificModel[0].model);
+
+var newCarLot = [];
+newCarLot = usedCarLot.filter(function (array){
+    if (array.year  >  2005) {return true;} else {return false;}
+});
+console.log(newCarLot);
+
+function show(str) {
+document.getElementById ("lot").innerHTML = str;
+}
+
+var showStr = "";
+
+for (var i=0; i < newCarLot.length; i++){
+  console.log("we made it", newCarLot);
+showStr = showStr + ' ' + newCarLot[i].make;
+showStr = showStr +' ' + newCarLot[i].model;
+showStr = showStr + ' '+ newCarLot[i].year + ',';
+show(showStr);}
+
+function showMakes(str) {
+document.getElementById("makes").innerHTML = str;
+}
+
+
+var makesInCarLot = "";
+console.log("makes", makesInCarLot);
+makesInCarLot = usedCarLot.reduce (function(acc, v){
+  var a = acc;
+  console.log("first :" + a);
+  //return an object that has a make property
+  //v is the next value
+  return {make: a.make + " " + v.make};
+});
+console.log(makesInCarLot.make);
+showMakes(makesInCarLot.make);
+
+
+
+console.log(document.getElementById("app").innerHTML.trim());
